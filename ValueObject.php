@@ -70,7 +70,7 @@ class ValueObject
 
 }
 
-$model = new ValueObject(1,1,1);
+$model = new ValueObject(-1,1,1);
 $model1 = new ValueObject(1,1,1);
 $model2 = $model->equals($model1);
 $model3 = $model1::random();
