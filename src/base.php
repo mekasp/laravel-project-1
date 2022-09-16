@@ -1,6 +1,6 @@
 <?php
 
-namespace Hillel\src;
+namespace Hillel\Src;
 
 class Base
 {

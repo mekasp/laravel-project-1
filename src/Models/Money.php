@@ -1,6 +1,6 @@
 <?php
 
-namespace Hillel\src\Models;
+namespace Hillel\Src\Models;
 
 class Money
 {
@@ -47,7 +47,7 @@ class Money
         if ($this->currency != $money->getCurrency()) {
             throw new InvalidArgumentException('формат не соответствует');
         } else {
-            return new Money($this->amount + $money->getAmount(),$currency = new Currency($this->currency));
+            return new Money($this->amount + $money->getAmount(),new Currency($this->currency));
         }
     }
 

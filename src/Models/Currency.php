@@ -1,6 +1,6 @@
 <?php
 
-namespace Hillel\src\Models;
+namespace Hillel\Src\Models;
 
 class Currency
 {
