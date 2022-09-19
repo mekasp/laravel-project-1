@@ -1,6 +1,6 @@
 <?php
 
-use Hillel\Src\Models\User;
+//use Hillel\Src\Models\User;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
@@ -16,9 +16,9 @@ require_once __DIR__ . '/../vendor/autoload.php';
 //$money2 = $money->add($money1);
 //var_dump($money2);
 
-$userFind = User::find(2);
+$userFind = \Hillel\Src\Models\User::find(2);
 //var_dump($userFind);
-$user = new User();
+$user = new \Hillel\Src\Models\User();
 
 $user->id = 5;
 $user->name = 'asdad';

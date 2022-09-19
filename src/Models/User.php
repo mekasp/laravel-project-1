@@ -33,7 +33,8 @@ abstract class Model
 
     public function update()
     {
-        $sql = "UPDATE user SET name = '".$this->name."', email = '".$this->email."' WHERE id = ".$this->id;
+        $property = static::property();
+        $sql = "UPDATE user SET ".$property[0][1]." = ".$property[1][1].", ".$property[0][2]." = ".$property[1][2]." WHERE ".$property[0][0]." = ".$property[1][0];
         return $sql;
     }
 
@@ -58,3 +59,4 @@ final class User extends Model
     public $name;
     public $email;
 }
+
