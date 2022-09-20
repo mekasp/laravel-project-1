@@ -58,6 +58,7 @@ use Hillel\Src\Models\Tag;
 //$model->slug = 'Phones';
 //$model->save();
 
+//$model = new Category();
 //for ($index = 1;$index <= 5; $index++) {
 //    $model = new Category();
 //    $model->title = 'Phones:' . $index;
@@ -70,8 +71,8 @@ use Hillel\Src\Models\Tag;
  */
 
 //$model = Category::find(1);
-//$model->title = 'test';
-//$model->slug = 'test';
+//$model->title = 'test121';
+//$model->slug = 'test121';
 //$model->save();
 //
 //echo '<pre>';
@@ -82,11 +83,15 @@ use Hillel\Src\Models\Tag;
  * 3. Видалити 1 категорію (delete).
  */
 
-//$model = Category::where('slug','TV')->first();
-//$model->delete();
-//echo '<pre>';
-//print_r($model);
-//echo '</pre>';
+//$category = Category::where('slug','test121')->first();
+//$posts = Post::where('category_id',$category['id'])->get();
+//
+//foreach ($posts as $post) {
+//    $post->tags()->detach();
+//    $post->delete();
+//}
+//$category->delete();
+
 
 /**
  * 4. Створити 10 постів, прикріпивши довільну категорію.
@@ -103,7 +108,7 @@ use Hillel\Src\Models\Tag;
 //echo '</pre>';
 
 //for ($index = 1; $index <= 10; $index++) {
-//    $category = Category::find(rand(1,4));
+//    $category = Category::find(rand(2,5));
 //    $post = new Post();
 //    $post->title = 'test:' . $index;
 //    $post->slug = 'test:' . $index;
@@ -129,9 +134,6 @@ use Hillel\Src\Models\Tag;
 
 //$post = Post::where('slug','www')->first();
 //$post->delete();
-//echo '<pre>';
-//print_r($post);
-//echo '</pre>';
 
 /**
  * 7. Створити 10 тегів
@@ -155,7 +157,7 @@ use Hillel\Src\Models\Tag;
 
 //$post = Post::find(2);
 //$post->tags()->sync([1,2,3]);
-
+//
 //$posts = Post::all();
 //
 //foreach ($posts as $post) {
