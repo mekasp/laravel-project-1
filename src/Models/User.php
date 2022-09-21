@@ -46,7 +46,7 @@ abstract class Model
 
     public function save()
     {
-        if (static::find($this->id) != 0) {
+        if (static::find($this->id) != null) {
             return $this->update();
         }
         return $this->create();
