@@ -41,3 +41,4 @@ $blueprint->create();
 $blueprint->foreign('post_id')->references('id')->on('posts');
 $blueprint->foreign('tag_id')->references('id')->on('tags');
 $blueprint->build($capsule->getConnection(), new Illuminate\Database\Schema\Grammars\MySqlGrammar());
+

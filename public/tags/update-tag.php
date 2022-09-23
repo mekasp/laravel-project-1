@@ -8,7 +8,6 @@ if (isset($_GET['id'])) {
     $tag = Hillel\Src\Models\Tag::find($_GET['id']);
 }
 
-
 /** @var $blade */
 echo $blade->make('/pages/tags/update-tag', [
     'title' => 'Tag update',

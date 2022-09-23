@@ -6,7 +6,6 @@ require_once __DIR__ . '/../../config/blade.php';
 
 $tags = Hillel\Src\Models\Tag::all();
 
-
 /** @var $blade */
 echo $blade->make('/pages/tags/list-tags', [
     'title' => 'Tags',

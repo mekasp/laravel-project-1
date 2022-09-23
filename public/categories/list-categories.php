@@ -6,7 +6,6 @@ require_once __DIR__ . '/../../config/blade.php';
 
 $categories = Hillel\Src\Models\Category::all();
 
-
 /** @var $blade */
 echo $blade->make('/pages/categories/list-categories', [
     'title' => 'Categories',

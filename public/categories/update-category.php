@@ -8,7 +8,6 @@ if (isset($_GET['id'])) {
     $category = Hillel\Src\Models\Category::find($_GET['id']);
 }
 
-
 /** @var $blade */
 echo $blade->make('/pages/categories/update-category', [
     'title' => 'Category update',

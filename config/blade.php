@@ -28,4 +28,3 @@ $blade = new Factory(
     $dispatcher
 );
 
-
