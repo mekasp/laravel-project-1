@@ -6,10 +6,6 @@
     @include('partial.breadcrumbs', [
         'links' => [
             [
-                'link' => '/',
-                'name' => 'Home'
-            ],
-            [
                 'link' => '/category',
                 'name' => 'Categories'
             ],
