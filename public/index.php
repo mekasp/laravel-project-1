@@ -3,14 +3,15 @@
 require_once __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__ . '/../config/database.php';
 require_once __DIR__ . '/../config/blade.php';
+require_once __DIR__ . '/../config/router.php';
 
-$pages = [
-    'name' => 'test name'
-];
+/**
+ * @var Illuminate\Routing\Router $router
+ */
+/**
+ * @var Illuminate\Http\Request $request
+ */
 
-/** @var $blade */
-echo $blade->make('/pages/index', [
-    'tags' => $pages,
-    'title' => 'Welcome'
-])->render();
+$response = $router->dispatch($request);
+echo $response->getContent();
 
