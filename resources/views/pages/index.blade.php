@@ -13,6 +13,10 @@
                 'link' => '/tag',
                 'name' => 'Tags'
             ],
+            [
+                'link' => '/post',
+                'name' => 'Posts'
+            ],
         ]
     ])
 @endsection

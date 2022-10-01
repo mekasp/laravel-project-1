@@ -5,9 +5,15 @@ namespace Hillel\Src\Controllers;
 use Hillel\Src\Models\Tag;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\RedirectResponse;
+use Hillel\Src\Models\Validator;
 
 class TagController
 {
+    private $validationRules = [
+        'title' => ['required', 'min:3'],
+        'slug' => ['required', 'min:3']
+    ];
+
     public function index()
     {
         $tags = Tag::all();
@@ -39,12 +45,18 @@ class TagController
 
     public function store()
     {
-        $request = request();
+        $request = Validator::validation($this->validationRules);
+
+        if (!is_array($request)) {
+            return $request;
+        }
 
         $tag = new Tag();
-        $tag->title = $request->input('title');
-        $tag->slug = $request->input('slug');
+        $tag->title = $request['title'];
+        $tag->slug = $request['slug'];
         $tag->save();
+
+        $_SESSION['success'] = 'Successful';
 
         return new RedirectResponse('/tag');
     }
@@ -61,12 +73,18 @@ class TagController
 
     public function update()
     {
-        $request = request();
+        $request = Validator::validation($this->validationRules);
 
-        $tag = Tag::find($request->input('id'));
-        $tag->title = $request->input('title');
-        $tag->slug = $request->input('slug');
+        if (!is_array($request)) {
+            return $request;
+        }
+
+        $tag = Tag::find($request['id']);
+        $tag->title = $request['title'];
+        $tag->slug = $request['slug'];
         $tag->save();
+
+        $_SESSION['success'] = 'Successful';
 
         return new RedirectResponse('/tag');
     }
@@ -76,6 +94,8 @@ class TagController
         $tag = Tag::find($id);
         $tag->posts()->detach();
         $tag->delete();
+
+        $_SESSION['success'] = 'Successful';
 
         return new RedirectResponse('/tag');
     }

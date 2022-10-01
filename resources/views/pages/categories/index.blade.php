@@ -13,11 +13,23 @@
                 'link' => '/tag',
                 'name' => 'Tags'
             ],
+            [
+                'link' => '/post',
+                'name' => 'Posts'
+            ],
         ]
     ])
 @endsection
 
 @section('content')
+    @isset($_SESSION['success'])
+            <div class="alert alert-success" role="alert">
+                {{ $_SESSION['success']}}
+            </div>
+    @endisset
+    @php
+        unset($_SESSION['success']);
+    @endphp
     <h1>{{ $title }}</h1>
     <a href="/category/create" class="btn btn-primary">Create</a>
     <table class="table">

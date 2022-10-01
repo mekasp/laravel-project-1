@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title', 'Tag show')
+@section('title', 'Post show')
 
 @section('breadcrumbs')
     @include('partial.breadcrumbs', [
@@ -26,10 +26,12 @@
 @endsection
 
 @section('content')
-    <h1>{{ $tag['title'] }}</h1>
+    <h1>{{ $post['title'] }}</h1>
     <ul>
-        <li>Slug: {{ $tag['slug'] }}</li>
-        <li>Created: {{ $tag['created_at'] }}</li>
-        <li>Updated: {{ $tag['updated_at'] }}</li>
+        <li>Slug: {{ $post['slug'] }}</li>
+        <li>Body: {{ $post['body'] }}</li>
+        <li>Category: {{ $post->category->title }}</li>
+        <li>Created: {{ $post['created_at'] }}</li>
+        <li>Updated: {{ $post['updated_at'] }}</li>
     </ul>
 @endsection
