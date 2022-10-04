@@ -67,10 +67,10 @@ class TagController
 
     public function store()
     {
-        $request = Validator::validation($this->validationRules);
-
-        if (!is_array($request)) {
-            return $request;
+        $request = request()->all();
+        Validator::validation($request,$this->validationRules);
+        if (isset($_SESSION['errors'])) {
+            return new RedirectResponse($_SERVER['HTTP_REFERER']);
         }
 
         $tag = new Tag();
@@ -95,10 +95,10 @@ class TagController
 
     public function update()
     {
-        $request = Validator::validation($this->validationRules);
-
-        if (!is_array($request)) {
-            return $request;
+        $request = request()->all();
+        Validator::validation($request,$this->validationRules);
+        if (isset($_SESSION['errors'])) {
+            return new RedirectResponse($_SERVER['HTTP_REFERER']);
         }
 
         $tag = Tag::find($request['id']);
