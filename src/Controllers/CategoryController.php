@@ -26,6 +26,27 @@ class CategoryController
         ]);
     }
 
+    public function trash()
+    {
+        $categories = Category::onlyTrashed()->get();
+
+        return view('/pages/categories/trash ',[
+            'title' => 'Categories',
+            'categories' => $categories
+        ]);
+    }
+
+    public function restore($id)
+    {
+        $category = Category::withTrashed()
+            ->where('id', $id)
+            ->restore();
+
+        $_SESSION['success'] = 'Successful';
+
+        return new RedirectResponse('/category');
+    }
+
     public function show($id)
     {
         $category = Category::find($id);
@@ -95,12 +116,22 @@ class CategoryController
     public function destroy($id)
     {
         $category = Category::find($id);
+        $category->delete();
+
+        $_SESSION['success'] = 'Successful';
+
+        return new RedirectResponse('/category');
+    }
+
+    public function forceDelete($id)
+    {
+        $category = Category::find($id);
         $posts = Post::where('category_id',$category['id'])->get();
         foreach ($posts as $post) {
             $post->tags()->detach();
-            $post->delete();
+            $post->forceDelete();
         }
-        $category->delete();
+        $category->forceDelete();
 
         $_SESSION['success'] = 'Successful';
 

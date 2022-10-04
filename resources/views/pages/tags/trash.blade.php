@@ -22,17 +22,9 @@
 @endsection
 
 @section('content')
-    @isset($_SESSION['success'])
-        <div class="alert alert-success" role="alert">
-            {{ $_SESSION['success']}}
-        </div>
-    @endisset
-    @php
-        unset($_SESSION['success']);
-    @endphp
+
     <h1>{{ $title }}</h1>
-    <a href="/tag/create" class="btn btn-primary">Create</a>
-    <a href="/tag/trash" class="btn btn-info">Trash</a>
+    <a href="/tag" class="btn btn-info">List</a>
     <table class="table">
         <thead>
         <tr>
@@ -54,10 +46,7 @@
                 <td>{{ $tag->posts->pluck('title')->join(', ') }}</td>
                 <td>{{ $tag['created_at'] }}</td>
                 <td>{{ $tag['updated_at'] }}</td>
-                <td><a class="btn btn-warning" href="/tag/{{$tag['id']}}/edit">Update</a></td>
-                <td><a class="btn btn-danger" href="/tag/{{$tag['id']}}/delete">Delete</a></td>
-                <td><a class="btn btn-primary" href="/tag/{{$tag['id']}}/show">Show</a></td>
-                <td><a class="btn btn-danger" href="/tag/{{$tag['id']}}/force-delete">Force Delete</a></td>
+                <td><a class="btn btn-warning" href="/tag/{{$tag['id']}}/restore">Restore</a></td>
             </tr>
         @empty
             <p>Empty</p>

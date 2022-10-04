@@ -30,7 +30,7 @@
     <form action="/post/store" method="POST">
         <div class="mb-3">
             <label for="title" class="form-label">Title</label>
-            <input type="text" class="form-control" id="title" name="title">
+            <input type="text" class="form-control" id="title" name="title" value="{{ $_SESSION['request']['title'] ?? '' }}">
             @isset($_SESSION['errors']['title'])
                 @foreach($_SESSION['errors']['title'] as $error)
                     <div class="alert alert-danger" role="alert">
@@ -41,7 +41,7 @@
         </div>
         <div class="mb-3">
             <label for="slug" class="form-label">Slug</label>
-            <input type="text" class="form-control" id="slug" name="slug">
+            <input type="text" class="form-control" id="slug" name="slug" value="{{ $_SESSION['request']['slug'] ?? '' }}">
             @isset($_SESSION['errors']['slug'])
                 @foreach($_SESSION['errors']['slug'] as $error)
                     <div class="alert alert-danger" role="alert">
@@ -52,7 +52,7 @@
         </div>
         <div class="mb-3">
             <label for="body" class="form-label">Body</label>
-            <input type="text" class="form-control" id="body" name="body">
+            <input type="text" class="form-control" id="body" name="body" value="{{ $_SESSION['request']['body'] ?? '' }}">
             @isset($_SESSION['errors']['body'])
                 @foreach($_SESSION['errors']['body'] as $error)
                     <div class="alert alert-danger" role="alert">

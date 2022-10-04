@@ -28,6 +28,27 @@ class PostController
         ]);
     }
 
+    public function trash()
+    {
+        $posts = Post::onlyTrashed()->get();
+
+        return view('/pages/posts/trash ',[
+            'title' => 'Posts',
+            'posts' => $posts
+        ]);
+    }
+
+    public function restore($id)
+    {
+        $post = Post::withTrashed()
+            ->where('id', $id)
+            ->restore();
+
+        $_SESSION['success'] = 'Successful';
+
+        return new RedirectResponse('/post');
+    }
+
     public function show($id)
     {
         $post = Post::find($id);
@@ -105,6 +126,18 @@ class PostController
     {
         $post = Post::find($id);
         $post->delete();
+
+        $_SESSION['success'] = 'Successful';
+
+        return new RedirectResponse('/post');
+    }
+
+    public function forceDelete($id)
+    {
+        $post = Post::find($id);
+        $post->tags()->detach();
+
+        $post->forceDelete();
 
         $_SESSION['success'] = 'Successful';
 
